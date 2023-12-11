@@ -33,15 +33,25 @@ function App() {
   };
 
   const guardarGasto = (gasto) => {
-    gasto.id = generarId();
-    gasto.fecha = Date.now();
-    setGastos([...gastos, gasto]);
+    if (gasto.id) {
+      const gastosActualizados = gastos.map(gastoState => gasto.id === gastoState.id ? gasto : gastoState)
+      // gasto.fecha = Date.now(); tambien sirve pero weno
+      setGastos(gastosActualizados)
+    } else {
+      gasto.id = generarId();
+      gasto.fecha = Date.now();
+      setGastos([...gastos, gasto]);
+
+    }
     setAnimarModal(false);
     setTimeout(() => {
       setModal(false);
     }, 500);
   };
-  console.log(gastos);
+
+  const eliminarGasto = (id) => {
+    console.log("eliminando", id);
+  }
 
   return (
     <div className={modal ? "fijar" : ""}>
@@ -56,6 +66,7 @@ function App() {
         <>
           <main>
             <ListadoGastos
+              eliminarGasto={eliminarGasto}
               setGastoEditar={setGastoEditar}
               gastos={gastos} />
           </main>
@@ -74,7 +85,7 @@ function App() {
           animarModal={animarModal}
           setAnimarModal={setAnimarModal}
           guardarGasto={guardarGasto}
-          gastoEditar={gastoEditar}  
+          gastoEditar={gastoEditar}
         />
       )}
     </div>
