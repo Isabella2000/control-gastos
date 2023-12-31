@@ -3,23 +3,22 @@ import {
   SwipeableList,
   SwipeableListItem,
   SwipeAction,
-  TrailingActions
-} from "react-swipeable-list"
-import "react-swipeable-list/dist/styles.css"
-import { formatearFecha } from "../helpers/index"
-import { formatearCantidad } from "../helpers/index.js"
+  TrailingActions,
+} from "react-swipeable-list";
+import "react-swipeable-list/dist/styles.css";
+import { formatearFecha } from "../helpers/index";
+import { formatearCantidad } from "../helpers/index.js";
 
-import IconoAhorro from "../img/icono_ahorro.svg"
-import IconoCasa from "../img/icono_casa.svg"
-import IconoGastos from "../img/icono_gastos.svg"
-import IconoOcio from "../img/icono_ocio.svg"
-import IconoComida from "../img/icono_comida.svg"
-import IconoSalud from "../img/icono_salud.svg"
-import IconoSuscripciones from "../img/icono_suscripciones.svg"
+import IconoAhorro from "../img/icono_ahorro.svg";
+import IconoCasa from "../img/icono_casa.svg";
+import IconoGastos from "../img/icono_gastos.svg";
+import IconoOcio from "../img/icono_ocio.svg";
+import IconoComida from "../img/icono_comida.svg";
+import IconoSalud from "../img/icono_salud.svg";
+import IconoSuscripciones from "../img/icono_suscripciones.svg";
 
 const Gasto = ({ gasto, setGastoEditar, eliminarGasto }) => {
-
-  const { nombre, cantidad, categoria, fecha } = gasto;
+  const { nombre, cantidad, categoria, fecha, id } = gasto;
 
   const diccionarioIconos = {
     ahorro: IconoAhorro,
@@ -28,24 +27,21 @@ const Gasto = ({ gasto, setGastoEditar, eliminarGasto }) => {
     gastos: IconoGastos,
     ocio: IconoOcio,
     salud: IconoSalud,
-    suscripciones: IconoSuscripciones
-  }
+    suscripciones: IconoSuscripciones,
+  };
   const leadingActions = () => (
     <leadingActions className="swipe-action__leading  swipeable-list">
-      <SwipeAction onClick={() => setGastoEditar(gasto)}>
-        Editar
-      </SwipeAction>
+      <SwipeAction onClick={() => setGastoEditar(gasto)}>Editar</SwipeAction>
     </leadingActions>
-  )
+  );
 
-  const trailingActions = (e) => (
+  const trailingActions = () => (
     <trailingActions className="swipe-action__trailing swipe-action">
-      <SwipeAction onClick={(e) => eliminarGasto(e)}>
+      <SwipeAction destructive={true} onClick={() => eliminarGasto(id)}>
         Eliminar
-        
       </SwipeAction>
     </trailingActions>
-  )
+  );
 
   return (
     <SwipeableList>
@@ -60,7 +56,7 @@ const Gasto = ({ gasto, setGastoEditar, eliminarGasto }) => {
               <p className="categoria">{categoria}</p>
               <p className="nombre-gasto">{nombre}</p>
               <p className="fecha-gasto">
-                Agregado el:{" "}<span>{formatearFecha(fecha)}</span>
+                Agregado el: <span>{formatearFecha(fecha)}</span>
               </p>
             </div>
           </div>
