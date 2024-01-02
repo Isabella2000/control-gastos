@@ -103,6 +103,7 @@ const Modal = ({
 
         <input
           type="submit"
+          className="float"
           value={gastoEditar.nombre ? "GUARDAR CAMBIOS" : "AÑADIR GASTO"}
         />
       </form>

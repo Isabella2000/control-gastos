@@ -51,8 +51,8 @@ const ControlPresupuesto = ({
           text={`${porcentaje}% gastado`}
           styles={buildStyles({
             textSize: "200px",
-            textColor: porcentaje < 100 ? "#DC26262" : "#3b82f6",
-            pathColor: porcentaje < 100 ? "#DC26262" : "#3b82f6",
+            textColor: porcentaje < 100 ? "#DC26262" : "#363457",
+            pathColor: porcentaje < 100 ? "#DC26262" : "#363457",
             trailColor: "#f5f5f5",
           })}
         />

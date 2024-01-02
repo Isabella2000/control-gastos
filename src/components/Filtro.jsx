@@ -4,7 +4,7 @@ const Filtro = ({ filtro, setFiltro }) => {
   return (
     <div className="filtros sombra contendor">
       <form>
-        <div className="campo">
+        <div className="campo filtro">
           <label>Filtrar gastos</label>
           <select value={filtro} onChange={(e) => setFiltro(e.target.value)}>
             <option value="">-- Todas las categorias --</option>
