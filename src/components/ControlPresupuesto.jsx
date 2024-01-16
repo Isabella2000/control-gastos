@@ -51,14 +51,14 @@ const ControlPresupuesto = ({
           text={`${porcentaje}% gastado`}
           styles={buildStyles({
             textSize: "200px",
-            textColor: porcentaje < 100 ? "#DC26262" : "#363457",
-            pathColor: porcentaje < 100 ? "#DC26262" : "#363457",
+            textColor: porcentaje < 100 ? "#DC26262" : "#556446",
+            pathColor: porcentaje < 100 ? "#DC26262" : "#556446",
             trailColor: "#f5f5f5",
           })}
         />
       </div>
       <div className="contenido-presupuesto">
-        <button className="reset-app" type="button" onClick={handleResetApp}>
+        <button className="reset-app float" type="button" onClick={handleResetApp}>
           Resetear app
         </button>
         <p>

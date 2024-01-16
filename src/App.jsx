@@ -5,6 +5,8 @@ import Modal from "./components/Modal";
 import { generarId } from "./helpers";
 import IconoNuevoGasto from "./img/nuevo-gasto.svg";
 import Filtro from "./components/Filtro";
+import moneda2 from "./img/moneda2.png";
+import moneda3 from "./img/moneda3.png";
 
 function App() {
   const [gastos, setGastos] = useState(
@@ -84,52 +86,79 @@ function App() {
   };
 
   const eliminarGasto = (id) => {
-    console.log("eliminando", id);
     const gastosActualizados = gastos.filter((gasto) => gasto.id !== id);
     setGastos(gastosActualizados);
   };
 
   return (
-    <div className={modal ? "fijar" : ""}>
-      <Header
-        gastos={gastos}
-        setGastos={setGastos}
-        presupuesto={presupuesto}
-        setPresupuesto={setPresupuesto}
-        isValidPresupuesto={isValidPresupuesto}
-        setIsValidPresupuesto={setIsValidPresupuesto}
-      />
-      {isValidPresupuesto && (
-        <>
-          <main>
-            <Filtro filtro={filtro} setFiltro={setFiltro} />
-            <ListadoGastos
-              eliminarGasto={eliminarGasto}
-              setGastoEditar={setGastoEditar}
-              gastos={gastos}
-              filtro={filtro}
-              gastosFiltrados={gastosFiltrados}
-            />
-          </main>
-          <div className="nuevo-gasto">
-            <img
-              src={IconoNuevoGasto}
-              alt="Icono Nuevo Gasto"
-              onClick={handleNuevoGasto}
-            />
-          </div>
-        </>
-      )}
-      {modal && (
-        <Modal
-          setModal={setModal}
-          animarModal={animarModal}
-          setAnimarModal={setAnimarModal}
-          guardarGasto={guardarGasto}
-          gastoEditar={gastoEditar}
-          setGastoEditar={setGastoEditar}
+    <div>
+      <div className={modal ? "fijar" : ""}>
+        <Header
+          gastos={gastos}
+          setGastos={setGastos}
+          presupuesto={presupuesto}
+          setPresupuesto={setPresupuesto}
+          isValidPresupuesto={isValidPresupuesto}
+          setIsValidPresupuesto={setIsValidPresupuesto}
         />
-      )}
+        {isValidPresupuesto && (
+          <>
+            <main>
+              <Filtro filtro={filtro} setFiltro={setFiltro} />
+              <ListadoGastos
+                eliminarGasto={eliminarGasto}
+                setGastoEditar={setGastoEditar}
+                gastos={gastos}
+                filtro={filtro}
+                gastosFiltrados={gastosFiltrados}
+              />
+            </main>
+            <div className="nuevo-gasto">
+              <img
+                src={IconoNuevoGasto}
+                alt="Icono Nuevo Gasto"
+                onClick={handleNuevoGasto}
+              />
+            </div>
+          </>
+        )}
+        {modal && (
+          <Modal
+            setModal={setModal}
+            animarModal={animarModal}
+            setAnimarModal={setAnimarModal}
+            guardarGasto={guardarGasto}
+            gastoEditar={gastoEditar}
+            setGastoEditar={setGastoEditar}
+          />
+        )}
+      </div>
+      <footer>
+        <div className="  bounce">
+          <img src={moneda2} alt="moneda 2" width={100} />
+        </div>
+        <div className="  bounce">
+          <img src={moneda3} alt="moneda 3" width={100} />
+        </div>
+        <h3>Isabella Collante Mendez</h3>
+        <div className="cat rotate-tr">
+          ** /| _ ╱|、<br />
+          ( •̀ㅅ •́  )<br />
+          ＿ノ ヽ ノ＼＿ <br />
+          /　`/ ⌒Ｙ⌒ Ｙ　 \<br />
+          ( 　(三ヽ人　 /　 　|<br />
+          |　ﾉ⌒＼ ￣￣ヽ　 ノ<br />
+          ヽ＿＿＿＞､＿＿／<br />
+          ｜( 王 ﾉ〈 <br />
+          /ﾐ`ー―彡\ <br />
+        </div>
+        <div className="  bounce">
+          <img src={moneda2} alt="moneda 2" width={100} />
+        </div>
+        <div className="  bounce">
+          <img src={moneda3} alt="moneda 3" width={100} />
+        </div>
+      </footer>
     </div>
   );
 }
